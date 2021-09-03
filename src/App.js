@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable no-unused-vars */
+import "./App.css";
+import React from "react";
+import axios from "axios";
+import "react-awesome-button/dist/styles.css";
+import Box from '@material-ui/core/Box';
+import DataComponent from "./DataComponent";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Typography } from "@material-ui/core";
+import EventSelection from "./EventSelection";
 
-function App() {
+export function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Box display='flex' justifyContent='center' flexDirection='column' m={4}>
+          <Typography variant='h5' mb={3}>PARTICIPATION FEE DETAILS:</Typography>
+          <DataComponent />
+        </Box>
+        <Box display='flex' justifyContent='center' flexDirection='column' m={4}>
+          <Typography variant='h5' mb={3}>EVENT SELECTION DATATABLE:</Typography>
+          <EventSelection />
+        </Box>
+      </Router>
+    </>
   );
 }
-
-export default App;
