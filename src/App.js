@@ -10,16 +10,22 @@ import { Typography } from "@material-ui/core";
 import EventSelection from "./EventSelection";
 
 export function App() {
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <>
       <Router>
         <Box display='flex' justifyContent='center' flexDirection='column' m={4}>
-          <Typography variant='h5' mb={3}>PARTICIPATION FEE DETAILS:</Typography>
+          <Typography variant='h5' mb={3} sx={{ fontFamily: 'Play sansSerif' }}>PARTICIPATION FEE DETAILS:</Typography>
           <DataComponent />
         </Box>
         <Box display='flex' justifyContent='center' flexDirection='column' m={4}>
-          <Typography variant='h5' mb={3}>EVENT SELECTION DATATABLE:</Typography>
+          <Typography variant='h5' mb={3} sx={{ fontFamily: 'Play sansSerif' }}>EVENTS SELECTION DETAILS:</Typography>
           <EventSelection />
         </Box>
       </Router>
