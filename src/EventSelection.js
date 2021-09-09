@@ -152,7 +152,7 @@ export default function EventSelection() {
       receipt: id,
     }
 
-    axios.post('http://localhost:5000/order', orders)
+    axios.post('/order', orders)
       .then(response => {
         console.log(`response`, response);
         let options = {
@@ -163,7 +163,7 @@ export default function EventSelection() {
           "description": "Test Transaction",
           "image": "https://image.shutterstock.com/image-vector/ninja-assassin-mascot-logo-vector-260nw-1760442626.jpg",
           "order_id": response.data.id,
-          "callback_url": "http://localhost:5000/order_complete",
+          "callback_url": "/order_complete",
           "notes": {
               "address": "Razorpay Corporate Office"
           },
