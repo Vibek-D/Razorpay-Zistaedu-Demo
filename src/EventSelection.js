@@ -147,7 +147,7 @@ export default function EventSelection() {
     console.log('Hi')
     let id = shortid.generate();
     let orders = {
-      amount: (mainEventPrice + webinarPrice + breakoutPrice)*100,
+      amount: (mainEventPrice + webinarPrice + breakoutPrice) * 100,
       currency: "USD",
       receipt: id,
     }
@@ -165,17 +165,17 @@ export default function EventSelection() {
           "order_id": response.data.id,
           "callback_url": "/order_complete",
           "notes": {
-              "address": "Razorpay Corporate Office"
+            "address": "Razorpay Corporate Office"
           },
           "theme": {
-              "color": "#424242"
+            "color": "#424242"
           }
         };
 
         let rzp = new window.Razorpay(options);
         rzp.open();
       }
-    );
+      );
   }
 
   const [open, setOpen] = React.useState(false);
@@ -199,58 +199,56 @@ export default function EventSelection() {
 
   return (
     <div>
-      <Paper elevation={3}>
-        <TableContainer>
-          <Table size={'small'}>
-            <EnhancedTableHead
-              numSelected={selected.length}
-              rowCount={rows.length}
-            />
-            <TableBody>
-              {rows.map((row, index) => {
-                const isItemSelected = isSelected(row.name);
-                const labelId = `enhanced-table-checkbox-${index}`;
+      <TableContainer component={Paper} elevation={3} sx={{ bgcolor: "whitesmoke" }}>
+        <Table size={'small'}>
+          <EnhancedTableHead
+            numSelected={selected.length}
+            rowCount={rows.length}
+          />
+          <TableBody>
+            {rows.map((row, index) => {
+              const isItemSelected = isSelected(row.name);
+              const labelId = `enhanced-table-checkbox-${index}`;
 
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    aria-checked={isItemSelected}
-                    tabIndex={-1}
-                    key={row.name}
-                    selected={isItemSelected}
-                  >
-                    <TableCell component="th" id={labelId} scope="row" sx={{ borderRight: 'solid 1px #DCDCDC' }}>{row.name}</TableCell>
-                    <TableCell align="center" sx={{ borderRight: 'solid 1px #DCDCDC' }}>
-                      <Checkbox
-                        checked={isItemSelected}
-                        onChange={(event) => handleClick(event, row.name)}
-                        inputProps={{ 'aria-labelledby': labelId }}
-                      />
-                    </TableCell>
-                    <TableCell align="center" sx={{ borderRight: 'solid 1px #DCDCDC' }}>
-                      <Checkbox
-                        checked={row.breakoutCheckbox}
-                        disabled={row.disabledToggle}
-                        onChange={(event) => handleBreakoutPrice(event, row.name)}
-                        inputProps={{ 'aria-labelledby': labelId }}
-                      />
-                    </TableCell>
-                    <TableCell align="center">
-                      <Checkbox
-                        checked={row.webinarCheckbox}
-                        disabled={row.disabledToggle}
-                        onChange={(event) => handleWebinarPrice(event, row.name)}
-                        inputProps={{ 'aria-labelledby': labelId }}
-                      />
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+              return (
+                <TableRow
+                  hover
+                  role="checkbox"
+                  aria-checked={isItemSelected}
+                  tabIndex={-1}
+                  key={row.name}
+                  selected={isItemSelected}
+                >
+                  <TableCell component="th" id={labelId} scope="row" sx={{ borderRight: 'solid 1px #DCDCDC' }}>{row.name}</TableCell>
+                  <TableCell align="center" sx={{ borderRight: 'solid 1px #DCDCDC' }}>
+                    <Checkbox
+                      checked={isItemSelected}
+                      onChange={(event) => handleClick(event, row.name)}
+                      inputProps={{ 'aria-labelledby': labelId }}
+                    />
+                  </TableCell>
+                  <TableCell align="center" sx={{ borderRight: 'solid 1px #DCDCDC' }}>
+                    <Checkbox
+                      checked={row.breakoutCheckbox}
+                      disabled={row.disabledToggle}
+                      onChange={(event) => handleBreakoutPrice(event, row.name)}
+                      inputProps={{ 'aria-labelledby': labelId }}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <Checkbox
+                      checked={row.webinarCheckbox}
+                      disabled={row.disabledToggle}
+                      onChange={(event) => handleWebinarPrice(event, row.name)}
+                      inputProps={{ 'aria-labelledby': labelId }}
+                    />
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Box mt={6} display="flex" justifyContent="center">
         <Button sx={{ width: "250px", height: "45px" }} variant="contained" color="primary" onClick={(event) => handleClickOpen(event)}>
           Submit Order
@@ -274,7 +272,7 @@ export default function EventSelection() {
             </Paper>
           </DialogContentText>
         </DialogContent>
-        <DialogActions sx={{pr:'24px'}}>
+        <DialogActions sx={{ pr: '24px' }}>
           <Button onClick={handleClose} variant="contained" color="primary">
             Cancel
           </Button>
@@ -293,7 +291,7 @@ export default function EventSelection() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseEmptyCart} color="primary" variant="contained" autoFocus>
+          <Button onClick={handleCloseEmptyCart} sx={{ mr: "10px" }} color="primary" variant="contained" autoFocus>
             Close
           </Button>
         </DialogActions>
